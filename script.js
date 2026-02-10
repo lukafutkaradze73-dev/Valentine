@@ -2,13 +2,28 @@ const yes = document.getElementById("yes");
 const no = document.getElementById("no");
 const result = document.getElementById("result");
 
-yes.onclick = () => {
-  result.innerText = "დამთანხმდააა 💕😍";
-  yes.style.transform = "scale(1.3)";
+let step = 0;
+
+no.onclick = () => {
+  step++;
+
+  if (step === 1) {
+    result.innerText = "დარწმუნებული ხარ? 🤨";
+  } 
+  else if (step === 2) {
+    result.innerText = "ნამდვილად? 😳";
+  } 
+  else if (step === 3) {
+    result.innerText = "კარგად დაფიქრდი 😅";
+  } 
+  else {
+    result.innerText = "კაი მაშინ… საბოლოო პასუხია მაინც კი 😄💖";
+    no.style.display = "none";
+    yes.style.transform = "scale(1.4)";
+  }
 };
 
-no.onmouseover = () => {
-  no.style.position = "absolute";
-  no.style.left = Math.random() * 80 + "%";
-  no.style.top = Math.random() * 80 + "%";
+yes.onclick = () => {
+  result.innerText = "უი 😍 საუკეთესო პასუხია! 💕";
+  no.style.display = "none";
 };
